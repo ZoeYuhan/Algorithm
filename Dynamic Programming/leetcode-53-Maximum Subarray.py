@@ -20,17 +20,12 @@ If you have figured out the O(n) solution, try coding another solution using the
 
 class Solution(object):
     def maxSubArray(self, arr):
-        if not arr:
-            return 0
-        n = len(arr)
-        sub_array = arr[0]
-        result = sub_array
-        for i in range(1, n):
-            if sub_array < 0:
-                sub_array = 0
-            sub_array += arr[i]
-            result = max(result, sub_array)
-        return result
+        subarr = 0
+        ans = -float('inf')
+        for i in range(len(arr)):
+            subarr = max(subarr + arr[i], arr[i])
+            ans = max(subarr, ans)
+        return ans
 
 
 if __name__ == '__main__':
